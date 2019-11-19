@@ -1,17 +1,32 @@
-// Task 1.1
+//>> Task 1.1
 // Функция, которая принимает два аргумента , результат - возведение числа в степень (**2 по-умолчанию)
 
 function sup(num, pow = 2) {
     let result = num ** pow;
-    return result
+    return result;
 }
 
 // Выполнение функции
-let num = prompt('number?', 0);
-let pow = prompt('power?', 0);
+let num = + prompt('number?', 0);
+let pow = + prompt('power?', 0);
 
 if (pow < 1) {
     alert(`Степень ${pow} не поддерживается, используйте натуральное число`);
 } else {
     console.log(`Task 1.1\n---------\n ${num} ** ${pow} = ${sup(num,pow)}\n ${num} ** 2 = ${sup(num)}`);
 }
+
+
+
+//>> Task 1.2
+// Функция выдает список слов в обратном порядке в верхнем регистре + буквы в этих словах в обратном порядке + через дефис
+
+function createReverceUppercaseString(userString) {
+    let newString = userString.split('').reverse().join('').replace(/\s/g, '').replace(/,/g , "-").toUpperCase();
+    //Мои действия: 1. Превращаю строку в список; 2. разворачиваю все эллементы списка в обратном порядке; 3. превращаю снова в строку ничего не изменяя; 4. Допуская, что пользователь мог допустить ошибку при вводе пробелов удаляю сперва все пробелы в строке; 5. Заменяю все ',' на '-'; 6. Подношу все буквы к верхнему регистру.
+    return newString;
+}
+
+// Выполнение функции
+let userString = prompt('Введите строку для внесения в ней изменений, разделяя слова запятой и пробелом',0);
+console.log(`\nTask 1.2\n---------\n Старая строка: ${userString}\n  Новая строка: ${createReverceUppercaseString(userString)}`);
