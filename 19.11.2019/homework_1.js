@@ -34,10 +34,10 @@ console.log(`\nTask 1.2\n---------\n Старая строка: ${userString}\n 
 
 
 //>> Task 1.3
-// Функция трансформирует записанную в нужном формате строку в объект
-function createNewObj(userString) {
+// Функция трансформирует записанную пользователем в нужном формате строку в объект
+function createNewObj(userInput) {
     let newObj = {};
-    let newFieldList = userString.replace(/: /g, ':').replace(/, /g, ',').split(',');
+    let newFieldList = userInput.replace(/: /g, ':').replace(/, /g, ',').split(',');
 //1. Допуская, что значение или свойство может содержать пробелы (например если это срока), и что могут возникать ошибки со стороны пользователя при вводе пробелов, удаляю только ненужные пробелы, которые могут попадаться возле разделителей, не затрагивая пробелы внутри будующих эллементов объекта; 2. Преобразую строку в список с будующими полями объекта
 
     for (let field of newFieldList) {
@@ -48,5 +48,23 @@ function createNewObj(userString) {
 }
 
 // Выполнение функции
-let userString = prompt('Введите строку, используя формат: "значение1: свойство1, значение2: свойство2, ..." для преобразования в объект',0);
-console.log(`\nTask 1.3\n---------\n Строка: ${userString}\n Преобразованный объект:`, createNewObj(userString));
+let userInput = prompt('Введите строку, используя формат: "значение1: свойство1, значение2: свойство2, ..." для преобразования в объект',0);
+console.log(`\nTask 1.3\n---------\n Строка: ${userInput}\n Преобразованный объект:`, createNewObj(userInput));
+
+
+
+//>> Task 1.4
+// Функция возвращает сумму элементов массива . Массив может содержать любые данные, обрабатываются только числа
+function calcSum(someList) {
+    let result = 0;
+    for (el of someList) {
+        if (typeof el === 'number') {
+            result += el;
+        }
+    }
+    return result;
+}
+
+// Выполнение функции
+let someList = ['sdigme', 54, 61, {user: 'Timofey', age: 22}, 11.25, 5, true, 'yes', 6.113];
+console.log(`\nTask 1.4\n---------\n Произвольный cписок: ${someList}\n Cумма всех чисел в данном списке: ${calcSum(someList)}`);
