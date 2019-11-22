@@ -2,9 +2,8 @@
 // Функция, которая проверяет, является ли строка палиндромом и возвращает соответственно true или false
 
 function isPalindrom(userInput) {
-    let result = (userInput.split('').reverse().join('') === userInput) ? true : false;
 
-    return result
+    return (userInput.split('').reverse().join('') === userInput) ? true : false;
 }
 
 // Выполнение функции
@@ -52,3 +51,6 @@ function showWords(someList) {
 // Выполнение функции
 let someList = ['пк', 'картина', 'дерево', 'четыре', 'шесть', 'нора', 'хрест'];
 console.log(`\nTask 2.3\n---------\n Старый список: ${someList}\n Новый список : ${showWords(someList)}`);
+
+
+
