@@ -3,7 +3,7 @@
 
 function isPalindrom(userInput) {
 
-    return (userInput.split('').reverse().join('') === userInput) ? true : false;
+    return userInput.split('').reverse().join('') === userInput;
 }
 
 // Выполнение функции
