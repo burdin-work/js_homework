@@ -126,11 +126,10 @@ console.log(`\nTask 2.5\n---------\n Список: ${anyArr}\n Эллемент�
 function delFalse(anyArray) {
 
     for (i = 0; i < anyArray.length; i++) {
-        if (!anyArray[i]) {
-            anyArray.splice(i, 1);
-            i--;
-        }
+
+        if (!anyArray[i]) anyArray.splice(i--, 1);
     }
+
     return anyArray;
 }
 
