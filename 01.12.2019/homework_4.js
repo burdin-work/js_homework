@@ -9,7 +9,7 @@ $.ajax({
     success: data => {
 
         let str = '';
-        let numTr = 1;
+        let startNum = 1;
 
         for (let el of data) {
 
@@ -33,7 +33,7 @@ $.ajax({
             }
 
 
-            str += '<tr><td>' + (numTr++) + '. </td><td>' + el.name + '</td><td>' + el.region + '</td><td>' + el.population + '</td><td>' + el.area + '</td><td><img src="' + el.flag + '"></td><td>' + getCurrencies() + '</td></tr>'
+            str += '<tr><td>' + ( startNum++ ) + '. </td><td>' + el.name + '</td><td>' + el.region + '</td><td>' + el.population + '</td><td>' + el.area + '</td><td><img src="' + el.flag + '"></td><td>' + getCurrencies() + '</td></tr>'
         }
 
         document.getElementById("someTable").innerHTML = str;
