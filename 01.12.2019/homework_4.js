@@ -6,11 +6,11 @@ function getEllements(currencies) {
 
     let  currencList = [];
 
-    for (let i of currencies) {
+    for (let currency of currencies) {
 
-        if (i.name == null) continue;
+        if (currency.name == null) continue;
 
-        currencList.push(i.name);
+        currencList.push(currency.name);
 
     }
 
@@ -25,12 +25,10 @@ $.ajax({
     success: data => {
 
         let str = '';
-        let startNum = 1;
 
+        for (let i in data) {
 
-        for (let el of data) {
-
-            str += '<tr><td>' + ( startNum++ ) + '. </td><td>' + el.name + '</td><td>' + el.region + '</td><td>' + el.population + '</td><td>' + el.area + '</td><td><img src="' + el.flag + '"></td><td>' + getEllements(el.currencies) + '</td></tr>'
+            str += '<tr><td>' + i + '. </td><td>' + data[i].name + '</td><td>' + data[i].region + '</td><td>' + data[i].population + '</td><td>' + data[i].area + '</td><td><img src="' + data[i].flag + '"></td><td>' + getEllements(data[i].currencies) + '</td></tr>'
         }
 
         document.getElementById("someTable").innerHTML = str;
