@@ -23,7 +23,7 @@ function createSorting(arr) {
     });
 
 
-    return newArray;
+    return newArray.reverse();
 }
 
 
