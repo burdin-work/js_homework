@@ -2,15 +2,15 @@
 // Отображение таблицы, в которой выводятся поля поля: name, region, popupation, area
 // со звездочкой: картинка флага по ресурсу из поля flag, первую колонку с порядковым номером, колонку валют (поле currencies), валюты через запятую
 
-function getCurrencies(obj) {
+function getEllements(currencies) {
 
     let  currencList = [];
 
-    for (let i in obj) {
+    for (let i of currencies) {
 
-        if (obj[i].name == null) continue;
+        if (i.name == null) continue;
 
-        currencList.push(obj[i].name);
+        currencList.push(i.name);
 
     }
 
@@ -30,7 +30,7 @@ $.ajax({
 
         for (let el of data) {
 
-            str += '<tr><td>' + ( startNum++ ) + '. </td><td>' + el.name + '</td><td>' + el.region + '</td><td>' + el.population + '</td><td>' + el.area + '</td><td><img src="' + el.flag + '"></td><td>' + getCurrencies(el.currencies) + '</td></tr>'
+            str += '<tr><td>' + ( startNum++ ) + '. </td><td>' + el.name + '</td><td>' + el.region + '</td><td>' + el.population + '</td><td>' + el.area + '</td><td><img src="' + el.flag + '"></td><td>' + getEllements(el.currencies) + '</td></tr>'
         }
 
         document.getElementById("someTable").innerHTML = str;
