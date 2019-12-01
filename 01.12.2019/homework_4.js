@@ -16,20 +16,16 @@ $.ajax({
 
             function getCurrencies() {
 
-                let tdText = '';
+                let  currencList = [];
 
                 for (let i in el.currencies) {
 
-                    // если это последняя указанная валюта - запятую не ставим
-                    if (i == el.currencies.length - 1) {
-                        tdText += el.currencies[i].name;
-                    } else {
-                        tdText += el.currencies[i].name + ', ';
-                    }
+                    if (el.currencies[i].name == null) continue;
 
+                    currencList.push(el.currencies[i].name);
                 }
 
-                return tdText;
+                return currencList.join(', ');
             }
 
 
