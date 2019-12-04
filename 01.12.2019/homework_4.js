@@ -28,7 +28,7 @@ $.ajax({
 
         for (let i in data) {
 
-            str += '<tr><td>' + i + '. </td><td>' + data[i].name + '</td><td>' + data[i].region + '</td><td>' + data[i].population + '</td><td>' + data[i].area + '</td><td><img src="' + data[i].flag + '"></td><td>' + getEllements(data[i].currencies) + '</td></tr>'
+            str += '<tr><td>' + i + '. </td><td>' + data[i].name + '</td><td>' + data[i].region + '</td><td>' + data[i].population + '</td><td>' + data[i].area + '</td><td><img src="' + data[i].flag + '"></td><td>' + getEllements(data[i].currencies) + '</td></tr>';
         }
 
         document.getElementById("someTable").innerHTML = str;
