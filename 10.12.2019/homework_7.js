@@ -7,7 +7,6 @@ $('#hide-table').hide();
 $('.frame-table').hide();
 
 
-
 // Таблица появляется только после нажатия на кнопку
 $('#load-table').on('click', (e) => {
 
@@ -18,29 +17,32 @@ $('#load-table').on('click', (e) => {
     let strHtml = '';
     let cellWhite = '<td>&nbsp</td>';
     let cellBlack = '<td class="bg-black">&nbsp</td>';
-    let amountPairs = 4;// chessBoard: white&black or black&white
+    let amountFields = 8;
 
-// Редрендинг таблицы
-    for (let i = 0; i < amountPairs * 2; i++) {
+    // Редрендинг таблицы
+    for (let i = 0; i < amountFields; i++) {
 
-        if (i % 2) {
-            strHtml += '<tr>' + (cellWhite + cellBlack).repeat(amountPairs) + '</tr>';
+        strHtml += '<tr>';
+
+        for (let j = 0; j < amountFields; j++) {
+
+            strHtml += (i % 2) && (j % 2) || !(i % 2) && !(j % 2) ? cellWhite : cellBlack;
         }
-        else {
-            strHtml += '<tr>' + (cellBlack + cellWhite).repeat(amountPairs) + '</tr>';
-        }
+
+        strHtml += '</tr>';
     }
+
+
     $('table#chessBoard').html(strHtml);
 
 
-// Обработчик для ячеек таблицы
+    // Обработчик для ячеек таблицы
     $("#chessBoard td").on('click', (e) => {
 
         if ($(e.currentTarget).hasClass("bg-black")) {
 
             $(e.currentTarget).removeClass("bg-black");
-        }
-        else {
+        } else {
             $(e.currentTarget).toggleClass("bg-black");
         }
 
@@ -49,7 +51,6 @@ $('#load-table').on('click', (e) => {
 
     $('.frame-table').show();
 });
-
 
 
 $('#hide-table').on('click', (e) => {
