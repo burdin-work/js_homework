@@ -87,9 +87,10 @@ let renderCountries = dataExchange => {
 
 
 // Обработчик выпадающего списка со странами
-$('#selectCountries').on('click', (e) => {
+$('#selectCountries').on('change', (e) => {
 
     let searchName = (document.getElementById("selectCountries").options[document.getElementById("selectCountries").options.selectedIndex].text);
+
     console.log(searchName);
 
     let result = restcountries.filter(el => {
