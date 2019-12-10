@@ -7,7 +7,6 @@ $('#hide-table').hide();
 $('.frame-table').hide();
 
 
-// Таблица появляется только после нажатия на кнопку
 $('#load-table').on('click', (e) => {
 
     $('#load-table').hide();
