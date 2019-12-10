@@ -38,13 +38,7 @@ $('#load-table').on('click', (e) => {
     // Обработчик для ячеек таблицы
     $("#chessBoard td").on('click', (e) => {
 
-        if ($(e.currentTarget).hasClass("bg-black")) {
-
-            $(e.currentTarget).removeClass("bg-black");
-        } else {
-            $(e.currentTarget).toggleClass("bg-black");
-        }
-
+        $(e.currentTarget).toggleClass("bg-black");
     });
 
 
