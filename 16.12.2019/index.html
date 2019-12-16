@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <title>Homework 8</title>
+
+    <style>
+        body {
+            font-size: 20px;
+            padding: 1.5rem;
+        }
+
+        .main-container,
+        .inside-container {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .frame-but {
+            text-align: left;
+            width: 100%;
+        }
+
+        .frame-but button {
+            margin-bottom: 4.5rem;
+            width: 100%;
+        }
+
+        .frame-but button {
+            padding: 1rem 8rem;
+        }
+
+        .frame-but button,
+        input {
+            margin-bottom: 2.5rem;
+            width: 100%;
+        }
+
+        button#hide-table {
+            margin-left: 9px;
+            background-color: rgba(56, 55, 99, .9);
+        }
+
+        button#hide-table:hover {
+            background-color: rgba(56, 55, 99, 1);
+        }
+
+        .frame-table {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Параметры тени */
+        }
+
+        table {
+            cursor: pointer;
+            table-layout: fixed;
+            width: 100%;
+            empty-cells: show;
+        }
+
+        table#exchangeTable thead {
+            background-color: rgba(0, 0, 0, .1);
+        }
+
+        table#exchangeTable thead tr {
+            height: 35px;
+        }
+
+        td:first-child {
+            width: 65px;
+        }
+
+        td:nth-child(2) {
+            width: 315px;
+        }
+
+
+        .m-left {
+            margin-left: 9px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="main-container">
+    <div class="frame-but">
+        <input type="text" id="date-indicate" placeholder="введите дату(в формате: DD.MM.YYYY)">
+        <button id="load-table" class="btn btn-primary">load table</button>
+        <button id="hide-table" class="btn btn-primary hideTable">hide table</button>
+
+        <div class="ui-widget">
+            <label for="tags">Поиск (по названию валюты): </label>
+            <input id="tags">
+        </div>
+    </div>
+
+    <div class="inside-container">
+        <div class="frame-table">
+            <table id="exchangeTable">
+                <thead>
+                <tr>
+                    <td>№</td>
+                    <td>Валюта</td>
+                    <td>3-х букв. код</td>
+                    <td>Продажа</td>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<script src="homework_8.js"></script>
+</body>
+</html>

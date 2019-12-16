@@ -12,7 +12,6 @@ $('#load-table').on('click', (e) => {
     $('#load-table').hide();
     $('#hide-table').show();
 
-
     let strHtml = '';
     let cellWhite = '<td>&nbsp</td>';
     let cellBlack = '<td class="bg-black">&nbsp</td>';
