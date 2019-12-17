@@ -5,6 +5,7 @@ $('.frame-table').hide();
 $('.ui-widget').hide();
 
 let objDataTable = [];
+let currencyNames = [];
 
 let renderExchange = dataExchange => {
 
@@ -19,6 +20,31 @@ let renderExchange = dataExchange => {
     }
 
     $('#exchangeTable tbody').html(htmlStr);
+};
+
+
+
+let autocomplete = () => {
+
+    // JQuery UI
+    $( function() {
+        $( "#tags" ).autocomplete({
+            source: currencyNames,
+            minLength: 3,
+
+            select: function() {
+                let search = $("#tags").val();
+                let result = objDataTable.filter(el => {
+                    let name = el.name.toLowerCase();
+                    let lowerSearch = search.toLowerCase();
+
+                    return name.indexOf(lowerSearch) >= 0;
+                });
+
+                renderExchange(result);
+            }
+        });
+    } );
 };
 
 
@@ -56,17 +82,8 @@ $('#load-table').on('click', () => {
             });
             renderExchange(objDataTable);
 
-
-            // JQuery UI
-            let currencyNames = objDataTable.map(el => el.name);
-            $( function() {
-                $( "#tags" ).autocomplete({
-                    source: currencyNames
-                });
-            } );
-
-
-
+            currencyNames = objDataTable.map(el => el.name);
+            autocomplete();
         },
 
         error: err => {
@@ -75,22 +92,6 @@ $('#load-table').on('click', () => {
     });
 
     $('.frame-table').show();
-});
-
-
-
-// Обработчик строки автодополнения
-$('#tags').on('change', (e) => {
-
-    let search = $(e.currentTarget).val();
-    let result = objDataTable.filter(el => {
-        let name = el.name.toLowerCase();
-        let lowerSearch = search.toLowerCase();
-
-        return name.indexOf(lowerSearch) >= 0;
-    });
-    console.log(result);
-    renderExchange(result);
 });
 
 
