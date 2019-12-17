@@ -71,7 +71,6 @@ $('#load-table').on('click', () => {
         url: 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json&date=' + date,
 
         success: data => {
-
             //загрузка данных таблицы + загрузка в html
             objDataTable = data.map(el => {
                 return {
