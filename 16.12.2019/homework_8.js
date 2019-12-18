@@ -1,4 +1,6 @@
-//alert(moment().format('DD.MM.YYYY'));
+//>> Task 8
+// Таблица с актуальным курсом валют. Возможность получения данных по конкретной дате.
+// Автокомплит от JQuery UI
 
 $('#hide-table').hide();
 $('.frame-table').hide();

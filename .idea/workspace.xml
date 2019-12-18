@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fbdf023d-f8f9-4807-aae7-14cd3a4052c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/16.12.2019/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/16.12.2019/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/16.12.2019/homework_8.js" beforeDir="false" afterPath="$PROJECT_DIR$/16.12.2019/homework_8.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,20 +13,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/16.12.2019/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
+            <state relative-caret-position="190">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/16.12.2019/homework_8.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="66" column="5" lean-forward="true" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+            <state relative-caret-position="153">
+              <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,12 +65,12 @@
       <list>
         <option value="$PROJECT_DIR$/08.12.2019/index.html" />
         <option value="$PROJECT_DIR$/10.12.2019/homework_7.js" />
-        <option value="$PROJECT_DIR$/16.12.2019/homework_8.js" />
         <option value="$PROJECT_DIR$/16.12.2019/index.html" />
+        <option value="$PROJECT_DIR$/16.12.2019/homework_8.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-11" />
     <option name="y" value="2" />
     <option name="width" value="1378" />
@@ -132,18 +135,18 @@
       <updated>1576489239699</updated>
       <workItem from="1576489241243" duration="16681000" />
       <workItem from="1576572379484" duration="7101000" />
-      <workItem from="1576688034236" duration="414000" />
+      <workItem from="1576688034236" duration="831000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24196000" />
+    <option name="totallyTimeSpent" value="24613000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="2" width="1378" height="743" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25716442" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25716442" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -156,7 +159,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.20257235" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2749196" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -173,16 +176,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="84" selection-start-line="84" selection-end-line="84" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/10.12.2019/homework_7.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="38" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -203,17 +196,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/16.12.2019/homework_8.js">
+    <entry file="file://$PROJECT_DIR$/16.12.2019/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="66" column="5" lean-forward="true" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+        <state relative-caret-position="190">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/16.12.2019/index.html">
+    <entry file="file://$PROJECT_DIR$/10.12.2019/homework_7.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
+        <state>
+          <caret selection-end-line="2" selection-end-column="67" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/16.12.2019/homework_8.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
