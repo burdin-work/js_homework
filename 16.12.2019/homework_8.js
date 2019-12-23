@@ -163,6 +163,8 @@ $('#load-table').on('click', () => {
 
 $('#refresh-table').on('click', () => {
 
+    $("#tags").val('');
+
     addTableAjax();
 });
 
