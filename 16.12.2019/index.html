@@ -48,14 +48,10 @@
             width: 100%;
         }
 
-        button#hide-table {
-            margin-left: 9px;
-            background-color: rgba(56, 55, 99, .9);
+        input#date-indicate {
+            padding-left: 1rem;
         }
 
-        button#hide-table:hover {
-            background-color: rgba(56, 55, 99, 1);
-        }
 
         .frame-table {
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Параметры тени */
@@ -93,6 +89,13 @@
             padding-left: 5px;
         }
 
+        @media screen and (min-width: 500px) {/* если окно браузера больше максимальной ширины сайта */
+            html {
+                margin-left: calc(100vw - 100%);
+                margin-right: 0;
+            }
+        }
+
     </style>
 
 </head>
@@ -102,7 +105,7 @@
     <div class="frame-but">
         <input type="text" id="date-indicate" placeholder="введите дату(в формате: YYYY-MM-DD)">
         <button id="load-table" class="btn btn-primary">load table</button>
-        <button id="hide-table" class="btn btn-primary hideTable">hide table</button>
+        <button id="refresh-table" class="btn btn-primary">refresh table</button>
 
         <div class="ui-widget">
             <label for="tags">Поиск (по названию валюты): </label>

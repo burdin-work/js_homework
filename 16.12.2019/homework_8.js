@@ -1,14 +1,52 @@
 //>> Task 8
 // Таблица с актуальным курсом валют. Возможность получения данных по конкретной дате.
 // Автокомплит от JQuery UI
+// Сохранение данных в localStorage и при загрузке страницы, если есть последние сохраненные данные - использование этих данных
 
-$('#hide-table').hide();
+$('#refresh-table').hide();
 $('.frame-table').hide();
 $('.ui-widget').hide();
 
 let objDataTable = [];
+let defaultDate = null;
+let valueDate = null;
+
 let currencyNames = [];
 
+
+
+// помещение значений localStorage в глобальные переменные
+let getLocalData = () => {
+
+    let savedData = localStorage.getItem('savedCourses');
+    if (savedData) {
+        let receivedData = JSON.parse(savedData);
+
+        defaultDate = moment(receivedData.lastDate, 'YYYYMMDD');
+
+        objDataTable = receivedData.data;
+    }
+};
+
+
+
+// установка значения input#date-indicate по-умолчанию
+let setDefaultDate = () => {
+
+    getLocalData();
+
+    if (defaultDate === null) defaultDate = moment().format('YYYYMMDD');
+
+    $("#date-indicate").val(defaultDate.format('YYYY-M-D'));
+};
+
+
+
+setDefaultDate();
+
+
+
+// загрузка таблицы в html
 let renderExchange = dataExchange => {
 
     let htmlStr = '';
@@ -20,6 +58,8 @@ let renderExchange = dataExchange => {
             '</td><td>' + dataExchange[i].abbr + '</td>' +
             '</td><td>' + dataExchange[i].rate + '</td>';
     }
+
+    currencyNames = objDataTable.map(el => el.name);
 
     $('#exchangeTable tbody').html(htmlStr);
 };
@@ -46,7 +86,66 @@ let autocomplete = () => {
                 renderExchange(result);
             }
         });
-    } );
+    });
+};
+
+
+
+let saveDataToLocal = () => {
+    let dataToSave = {
+        lastDate: valueDate,
+        data: objDataTable
+    };
+    localStorage.setItem('savedCourses', JSON.stringify(dataToSave));
+};
+
+
+
+let addTableAjax = () => {
+
+    valueDate = moment($('#date-indicate').val(), 'YYYY-M-D').format('YYYYMMDD');
+
+    if (valueDate  === defaultDate) {
+
+        saveDataToLocal();
+
+        renderExchange(objDataTable);
+
+        autocomplete();
+
+        $('.frame-table').show();
+
+
+    } else {
+
+        $.ajax({
+            url: 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json&date=' + valueDate,
+
+            success: data => {
+                //загрузка данных таблицы + загрузка в html
+                objDataTable = data.map(el => {
+                    return {
+                        name: el.txt,
+                        abbr: el.cc,
+                        rate: el.rate,
+                    };
+                });
+
+
+                saveDataToLocal();
+
+                renderExchange(objDataTable);
+
+                autocomplete();
+
+                $('.frame-table').show();
+            },
+
+            error: err => {
+                console.log(err);
+            }
+        });
+    }
 };
 
 
@@ -54,58 +153,17 @@ let autocomplete = () => {
 $('#load-table').on('click', () => {
 
     $('#load-table').hide();
-    $('#hide-table').show();
+    $('#refresh-table').show();
     $('.ui-widget').show();
-    $('#date-indicate').toggleClass('m-left');
-    $('.inside-container').toggleClass('m-left');
-    $('.ui-widget').toggleClass('m-left');
 
+    addTableAjax();
 
-    let date = moment($('#date-indicate').val(), 'YYYY-M-D').format('YYYYMMDD');
-
-    if(date === 'Invalid date') {
-        date = moment().format('YYYYMMDD');
-        $("#date-indicate").val(moment().format('YYYY-MM-DD'));
-    }
-
-
-    $.ajax({
-        url: 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json&date=' + date,
-
-        success: data => {
-            //загрузка данных таблицы + загрузка в html
-            objDataTable = data.map(el => {
-                return {
-                    name: el.txt,
-                    abbr: el.cc,
-                    rate: el.rate,
-                };
-            });
-            renderExchange(objDataTable);
-
-            currencyNames = objDataTable.map(el => el.name);
-            autocomplete();
-        },
-
-        error: err => {
-            console.log(err);
-        }
-    });
-
-    $('.frame-table').show();
 });
 
 
+$('#refresh-table').on('click', () => {
 
-$('#hide-table').on('click', () => {
-
-    $('#hide-table').hide();
-    $('.frame-table').hide();
-    $('.ui-widget').hide();
-    $('#load-table').show();
-    $('#date-indicate').toggleClass('m-left');
-    $('.inside-container').toggleClass('m-left');
-    $('.ui-widget').toggleClass('m-left');
+    addTableAjax();
 });
 
 
