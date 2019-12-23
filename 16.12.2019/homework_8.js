@@ -157,8 +157,8 @@ $('#load-table').on('click', () => {
     $('.ui-widget').show();
 
     addTableAjax();
-
 });
+
 
 
 $('#refresh-table').on('click', () => {
