@@ -3,10 +3,6 @@
 // Автокомплит от JQuery UI
 // Сохранение данных в localStorage и при загрузке страницы, если есть последние сохраненные данные - использование этих данных
 
-$('#refresh-table').hide();
-$('.frame-table').hide();
-$('.ui-widget').hide();
-
 let objDataTable = [];
 let defaultDate = null;
 let valueDate = null;
