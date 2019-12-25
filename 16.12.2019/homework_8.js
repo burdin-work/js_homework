@@ -3,16 +3,16 @@
 // Автокомплит от JQuery UI
 // Сохранение данных в localStorage и при загрузке страницы, если есть последние сохраненные данные - использование этих данных
 
-let objDataTable = [];
 let currencyNames = [];
-let defaultDate = null;
+let objDataTable = [];
 let valueDate = null;
+let defaultDate = null;
 
 
 // установка значения input#date-indicate по-умолчанию
 const setDefaultDate = () => {
 
-    // помещение значений localStorage в глобальные переменные
+    // помещение значений localStorage в переменные
     const getLocalData = () => {
 
         let savedData = localStorage.getItem('savedCourses');
@@ -27,13 +27,10 @@ const setDefaultDate = () => {
 
     getLocalData();
 
-    defaultDate = moment();
-
-    if (defaultDate === null) defaultDate = defaultDate.format('YYYYMMDD');
+    if (defaultDate === null) defaultDate = moment().format('YYYYMMDD');
 
     $("#date-indicate").val(defaultDate.format('YYYY-M-D'));
 };
-
 
 
 setDefaultDate();
@@ -124,7 +121,6 @@ const addTable = () => {
                         rate: el.rate,
                     };
                 });
-
 
                 saveDataToLocal();
 
