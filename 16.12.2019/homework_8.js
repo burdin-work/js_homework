@@ -3,42 +3,60 @@
 // Автокомплит от JQuery UI
 // Сохранение данных в localStorage и при загрузке страницы, если есть последние сохраненные данные - использование этих данных
 
-let currencyNames = [];
-let objDataTable = [];
-let valueDate = null;
-let defaultDate = null;
+function storage() {
+
+    let storageData = {
+        currencyNames : [],
+        objDataTable : [],
+        valueDate : null,
+        defaultDate : null
+    };
+
+    return {
+        setData: (newData) => {
+            storageData = newData
+        },
+        getData: () => {
+            return storageData;
+        }
+    }
+}
+
 
 
 // установка значения input#date-indicate по-умолчанию
 const setDefaultDate = () => {
 
-    // помещение значений localStorage в переменные
+    let newStorageData = globalStorage.getData();
+
+    // помещение значений localStorage в объект с данными в хранилище
     const getLocalData = () => {
 
         let savedData = localStorage.getItem('savedCourses');
         if (savedData) {
             let receivedData = JSON.parse(savedData);
 
-            defaultDate = moment(receivedData.lastDate, 'YYYYMMDD');
+            newStorageData.defaultDate = moment(receivedData.lastDate, 'YYYYMMDD');
 
-            objDataTable = receivedData.data;
+            newStorageData.objDataTable = receivedData.data;
         }
     };
 
     getLocalData();
 
-    if (defaultDate === null) defaultDate = moment().format('YYYYMMDD');
+    if (newStorageData.defaultDate === null) newStorageData.defaultDate = moment().format('YYYYMMDD');
 
-    $("#date-indicate").val(defaultDate.format('YYYY-M-D'));
+    $("#date-indicate").val(newStorageData.defaultDate.format('YYYY-M-D'));
+
+    storage().setData(newStorageData);
 };
-
-
-setDefaultDate();
 
 
 
 // загрузка таблицы в html
 const renderExchange = dataExchange => {
+
+    let newStorageData = globalStorage.getData();
 
     let htmlStr = '';
 
@@ -50,24 +68,28 @@ const renderExchange = dataExchange => {
             '</td><td>' + dataExchange[i].rate + '</td>';
     }
 
-    currencyNames = objDataTable.map(el => el.name);
+    newStorageData.currencyNames = newStorageData.objDataTable.map(el => el.name);
 
     $('#exchangeTable tbody').html(htmlStr);
+
+    storage().setData(newStorageData);
 };
 
 
 
 const autocomplete = () => {
 
+    let newStorageData = globalStorage.getData();
+
     // JQuery UI
     $( function() {
         $( "#tags" ).autocomplete({
-            source: currencyNames,
+            source: newStorageData.currencyNames,
             minLength: 3,
 
             select: function() {
                 let search = $("#tags").val();
-                let result = objDataTable.filter(el => {
+                let result = newStorageData.objDataTable.filter(el => {
                     let name = el.name.toLowerCase();
                     let lowerSearch = search.toLowerCase();
 
@@ -78,29 +100,38 @@ const autocomplete = () => {
             }
         });
     });
+
+    storage().setData(newStorageData);
 };
 
 
 
 const saveDataToLocal = () => {
+
+    let newStorageData = globalStorage.getData();
+
     let dataToSave = {
-        lastDate: valueDate,
-        data: objDataTable
+        lastDate: newStorageData.valueDate,
+        data: newStorageData.objDataTable
     };
     localStorage.setItem('savedCourses', JSON.stringify(dataToSave));
+
+    storage().setData(newStorageData);
 };
 
 
 
 const addTable = () => {
 
-    valueDate = moment($('#date-indicate').val(), 'YYYY-M-D').format('YYYYMMDD');
+    let newStorageData = globalStorage.getData();
 
-    if (valueDate  === defaultDate) {
+    newStorageData.valueDate = moment($('#date-indicate').val(), 'YYYY-M-D').format('YYYYMMDD');
+
+    if (newStorageData.valueDate  === newStorageData.defaultDate) {
 
         saveDataToLocal();
 
-        renderExchange(objDataTable);
+        renderExchange(newStorageData.objDataTable);
 
         autocomplete();
 
@@ -110,11 +141,11 @@ const addTable = () => {
     } else {
 
         $.ajax({
-            url: 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json&date=' + valueDate,
+            url: 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json&date=' + newStorageData.valueDate,
 
             success: data => {
                 //загрузка данных таблицы + загрузка в html
-                objDataTable = data.map(el => {
+                newStorageData.objDataTable = data.map(el => {
                     return {
                         name: el.txt,
                         abbr: el.cc,
@@ -124,7 +155,7 @@ const addTable = () => {
 
                 saveDataToLocal();
 
-                renderExchange(objDataTable);
+                renderExchange(newStorageData.objDataTable);
 
                 autocomplete();
 
@@ -136,8 +167,18 @@ const addTable = () => {
             }
         });
     }
+
+    storage().setData(newStorageData);
 };
 
+
+
+// ACTIONS
+
+let globalStorage = storage();
+
+
+setDefaultDate();
 
 
 $('#load-table').on('click', () => {
@@ -150,13 +191,10 @@ $('#load-table').on('click', () => {
 });
 
 
-
 $('#refresh-table').on('click', () => {
 
     $("#tags").val('');
 
     addTable();
 });
-
-
 
