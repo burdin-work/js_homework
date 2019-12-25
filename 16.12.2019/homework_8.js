@@ -12,7 +12,7 @@ let currencyNames = [];
 
 
 // помещение значений localStorage в глобальные переменные
-let getLocalData = () => {
+const getLocalData = () => {
 
     let savedData = localStorage.getItem('savedCourses');
     if (savedData) {
@@ -27,11 +27,13 @@ let getLocalData = () => {
 
 
 // установка значения input#date-indicate по-умолчанию
-let setDefaultDate = () => {
+const setDefaultDate = () => {
 
     getLocalData();
 
-    if (defaultDate === null) defaultDate = moment().format('YYYYMMDD');
+    defaultDate = moment();
+
+    if (defaultDate === null) defaultDate = defaultDate.format('YYYYMMDD');
 
     $("#date-indicate").val(defaultDate.format('YYYY-M-D'));
 };
@@ -43,7 +45,7 @@ setDefaultDate();
 
 
 // загрузка таблицы в html
-let renderExchange = dataExchange => {
+const renderExchange = dataExchange => {
 
     let htmlStr = '';
 
@@ -62,7 +64,7 @@ let renderExchange = dataExchange => {
 
 
 
-let autocomplete = () => {
+const autocomplete = () => {
 
     // JQuery UI
     $( function() {
@@ -87,7 +89,7 @@ let autocomplete = () => {
 
 
 
-let saveDataToLocal = () => {
+const saveDataToLocal = () => {
     let dataToSave = {
         lastDate: valueDate,
         data: objDataTable
@@ -97,7 +99,7 @@ let saveDataToLocal = () => {
 
 
 
-let addTableAjax = () => {
+const addTable = () => {
 
     valueDate = moment($('#date-indicate').val(), 'YYYY-M-D').format('YYYYMMDD');
 
@@ -152,7 +154,7 @@ $('#load-table').on('click', () => {
     $('#refresh-table').show();
     $('.ui-widget').show();
 
-    addTableAjax();
+    addTable();
 });
 
 
@@ -161,7 +163,7 @@ $('#refresh-table').on('click', () => {
 
     $("#tags").val('');
 
-    addTableAjax();
+    addTable();
 });
 
 
