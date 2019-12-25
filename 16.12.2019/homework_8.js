@@ -4,30 +4,26 @@
 // Сохранение данных в localStorage и при загрузке страницы, если есть последние сохраненные данные - использование этих данных
 
 let objDataTable = [];
+let currencyNames = [];
 let defaultDate = null;
 let valueDate = null;
-
-let currencyNames = [];
-
-
-
-// помещение значений localStorage в глобальные переменные
-const getLocalData = () => {
-
-    let savedData = localStorage.getItem('savedCourses');
-    if (savedData) {
-        let receivedData = JSON.parse(savedData);
-
-        defaultDate = moment(receivedData.lastDate, 'YYYYMMDD');
-
-        objDataTable = receivedData.data;
-    }
-};
-
 
 
 // установка значения input#date-indicate по-умолчанию
 const setDefaultDate = () => {
+
+    // помещение значений localStorage в глобальные переменные
+    const getLocalData = () => {
+
+        let savedData = localStorage.getItem('savedCourses');
+        if (savedData) {
+            let receivedData = JSON.parse(savedData);
+
+            defaultDate = moment(receivedData.lastDate, 'YYYYMMDD');
+
+            objDataTable = receivedData.data;
+        }
+    };
 
     getLocalData();
 
