@@ -50,8 +50,8 @@ console.log('\nTask 3.2\n---------\n Содержимое ячейки при к
 
 let listTd = document.getElementsByTagName('td');
 
-for (let i in listTd) {
-    listTd[i].onclick = function showText() {
+for (let el of listTd) {
+    el.onclick = function showText() {
         console.log(this.innerHTML);
     }
 }
